@@ -1,16 +1,16 @@
-client/node_modules
-server/node_modules
+backend/node_modules
+frontend/node_modules
 .env
 
-client/.env
-server/.env
+backend/.env
+frontend/.env
 
-client/build
+frontend/build
 
 **/.env
 
 **/package-lock.json
-client/package-lock.json
-background/package-lock.json
+frontend/package-lock.json
+backend/package-lock.json
 
 .DS_Store
