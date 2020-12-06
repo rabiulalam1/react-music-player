@@ -1,4 +1,4 @@
-import React from 'react';
+import {playAudio} from '../util';
 
 const LibrarySongs = ({ song, songs, setSongs, setCurrentSong,
     currentSong, audioRef, isPlaying }) => {
@@ -13,11 +13,7 @@ const LibrarySongs = ({ song, songs, setSongs, setCurrentSong,
             }
         })
         setSongs(newSongs);
-        if (isPlaying) {
-            audioRef.current.play()
-                //Promise used, because song takes time to load
-                .then(() => audioRef.current.play())
-            }
+        playAudio(isPlaying,audioRef)
     } 
 
     return (

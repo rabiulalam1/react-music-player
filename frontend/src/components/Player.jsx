@@ -1,6 +1,7 @@
 import {useEffect} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faAngleLeft, faAngleRight, faPause } from '@fortawesome/free-solid-svg-icons'
+import { playAudio } from '../util';
 
 const Player = ({ currentSong, songs, setSongs, 
     isPlaying, setIsPlaying, setCurrentSong, 
@@ -47,10 +48,12 @@ const Player = ({ currentSong, songs, setSongs,
         }
         if (direction === "skipBack") {
             if ((currentIndex - 1) % songs.length === -1) {
+                playAudio(isPlaying,audioRef)
                return setCurrentSong(songs[songs.length - 1])
             }
             setCurrentSong(songs[(currentIndex-1) % songs.length])
         }
+        playAudio(isPlaying,audioRef)
     }
 
     return (
@@ -63,7 +66,7 @@ const Player = ({ currentSong, songs, setSongs,
                     onChange={dragHandler}
                     type="range"
                 />
-                <p>{timeFormat(songInfo.duration)}</p>
+                <p>{(songInfo.duration) ? timeFormat(songInfo.duration):"0:00"}</p>
             </div>
             <div className="play-control">
                 <FontAwesomeIcon onClick={()=>skipHandler("skipBack")} className="skip-back"
