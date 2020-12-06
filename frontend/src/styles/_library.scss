@@ -1,0 +1,64 @@
+.library {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 15rem;
+  background-color: #e3f6f5;
+  box-shadow: 2px 2px 50px rgb(189, 188, 188);
+  overflow: scroll;
+  transform: translateX(-100%);
+  transition: all 0.5s ease;
+  opacity: 0;
+
+  h2 {
+    padding: 2rem;
+  }
+}
+
+.library-song {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  cursor: pointer;
+
+  img {
+    width: 30%;
+  }
+  &:hover {
+    background: #bae8e8;
+  }
+
+  h3 {
+    padding-left: 1rem;
+    font-size: 1rem;
+  }
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.5);
+  border-radius: 20px;
+  border: transparent;
+}
+
+.selected {
+  background: #b1bed5;
+}
+
+.active-library {
+  transform: translateX(0%);
+  opacity: 1;
+}

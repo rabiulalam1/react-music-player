@@ -34,6 +34,14 @@ function songs() {
             audio : "https://files1.mp3slash.xyz/stream/1fcfcf16e5dea8e3725eddae657fbb95",
             id: v4(),
             active: false,
+        },
+        {
+            name: "Slow Motion",
+            cover: "https://www.desinode.com/storage/images/250/7293.jpg",
+            artist: "Vishal-shekhar , Shreya Ghoshal , Nakash Aziz",
+            audio : "https://files1.mp3slash.xyz/stream/fe6f1050fbff89c11ca6d46c3111dae7",
+            id: v4(),
+            active: false,  
         }
     ]
 }
