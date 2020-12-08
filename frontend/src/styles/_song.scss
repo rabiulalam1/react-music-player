@@ -9,3 +9,27 @@
     padding-top: 0.8rem;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .song-container {
+    img {
+      border-radius: 50%;
+      width: 35%;
+    }
+    h1 {
+      padding-top: 2rem;
+      font-size: 1.7rem;
+    }
+    h3 {
+      font-size: 1rem;
+    }
+  }
+}
+@media screen and (max-width: 400px) {
+  .song-container {
+    img {
+      border-radius: 50%;
+      width: 55%;
+    }
+  }
+}

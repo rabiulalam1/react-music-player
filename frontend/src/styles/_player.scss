@@ -26,3 +26,20 @@
   padding: 1rem;
   width: 30%;
 }
+
+@media screen and (max-width: 768px) {
+  .time-control {
+    width: 70%;
+  }
+  .play-control {
+    width: 45%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .time-control {
+    width: 90%;
+  }
+  .play-control {
+    width: 65%;
+  }
+}

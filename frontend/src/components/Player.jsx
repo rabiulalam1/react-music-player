@@ -1,7 +1,6 @@
 import {useEffect} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faAngleLeft, faAngleRight, faPause } from '@fortawesome/free-solid-svg-icons'
-import { playAudio } from '../util';
 
 const Player = ({ currentSong, songs, setSongs, 
     isPlaying, setIsPlaying, setCurrentSong, 
@@ -9,6 +8,11 @@ const Player = ({ currentSong, songs, setSongs,
 }) => {
 
     useEffect(() => {
+        
+        console.log("Player")
+    }, [currentSong])
+    
+    const activeLibraryHandler = (state) => {
         const newSongs = songs.map(state => {
             if (currentSong.id === state.id) {
                 return { ...state, active: true };
@@ -17,7 +21,7 @@ const Player = ({ currentSong, songs, setSongs,
             }
         })
         setSongs(newSongs);
-    },[currentSong])
+    }
 
     const timeFormat = (time) => {
         return (
@@ -41,19 +45,23 @@ const Player = ({ currentSong, songs, setSongs,
         })
     }
 
-    const skipHandler = (direction) => {
+    const skipHandler = async (direction) => {
         let currentIndex = songs.findIndex((song) => song.id === currentSong.id)
         if (direction === "skipForward") {
-            setCurrentSong(songs[(currentIndex+1) % songs.length])
+            await setCurrentSong(songs[(currentIndex + 1) % songs.length])
+            activeLibraryHandler(songs[(currentIndex + 1) % songs.length])
         }
         if (direction === "skipBack") {
             if ((currentIndex - 1) % songs.length === -1) {
-                playAudio(isPlaying,audioRef)
-               return setCurrentSong(songs[songs.length - 1])
+                if(isPlaying) audioRef.current.play()
+                await setCurrentSong(songs[songs.length - 1])
+                activeLibraryHandler(songs[songs.length - 1])
+                return;
             }
-            setCurrentSong(songs[(currentIndex-1) % songs.length])
+            await setCurrentSong(songs[(currentIndex - 1) % songs.length])
+            activeLibraryHandler(songs[(currentIndex - 1) % songs.length])
         }
-        playAudio(isPlaying,audioRef)
+        if(isPlaying) audioRef.current.play()
     }
 
     return (
